@@ -38,6 +38,24 @@ def get_simple_rhyme_core(word):
                 return word[i::]
 
 
+def find_simple_rhyme_core(word: str) -> int:
+    reverse_enumerated_word = [(i, letter) for i, letter in enumerate(word)]
+    reverse_enumerated_word.reverse()
+
+    for index, letter in reverse_enumerated_word:
+        if letter in VOVELS:
+            if index != 0 and word[index-1] in MULTI_VOVEL_SYLLABLE_PREFIXES:
+                return index-1
+            else:
+                return index
+
+
+def get_standard_rhyme_core(word):
+    first_core_index = find_simple_rhyme_core(word)
+    standard_rhyme_index = find_simple_rhyme_core(word[:first_core_index])
+    return word[standard_rhyme_index::]
+
+
 def get_last_syllable(word: str):
     word = word.lower()
     # for i in range(len(word)):
