@@ -25,6 +25,19 @@ def is_multiple_vovel_syllable(word, i):
     return word[i] in MULTI_VOVEL_SYLLABLE_PREFIXES and word[i+1] in VOVELS
 
 
+def get_simple_rhyme_core(word):
+    word_length = len(word)
+    reverse_enumerated_word = [(i, letter) for i, letter in enumerate(word)]
+    reverse_enumerated_word.reverse()
+
+    for i, letter in reverse_enumerated_word:
+        if letter in VOVELS:
+            if i != 0 and word[i-1] in VOVELS:
+                return word[i-1::]
+            else:
+                return word[i::]
+
+
 def get_last_syllable(word: str):
     word = word.lower()
     # for i in range(len(word)):

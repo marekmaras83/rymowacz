@@ -1,14 +1,35 @@
 import pytest
 
-from rymowacz.rymowacz import has_one_syllable, get_last_syllable
+from rymowacz.rymowacz import has_one_syllable, get_last_syllable, get_simple_rhyme_core
 
 
 @pytest.mark.parametrize("input_word, output", [
-    ("buba", False), ("wnet", True), ("wiem", True), ('zjem', True), ('źrebak', False), ('wieczór', False), ("to", True)
+    ("buba", False), ("wnet", True), ('źrebak', False),
+    ("wiem", True), ('zjem', True), ('wieczór', False),
+    ("to", True),
+    ("boa", False),
 ])
 def test_count_syllables(input_word, output):
     assert has_one_syllable(input_word) is output
 
+
+@pytest.mark.parametrize("input_word, expected_output", [
+    ("wnet", "et"),
+    ("wiem", "iem"), ('zjem', "jem"),
+    ("to", "o"),
+    ("zło", "o"),
+])
+def test_get_simple_rhyme_core(input_word, expected_output):
+    assert get_simple_rhyme_core(input_word) == expected_output
+
+
+# @pytest.mark.parametrize("input_word, output", [
+#     ("buba", False), ('źrebak', False),
+#     # ('wieczór', False),
+#     # ("boa", False),
+# ])
+# def test_get_standard_rhyme_core(input_word, output):
+#     assert get_standard_rhyme_core(input_word) == output
 
 # @pytest.mark.parametrize("input_word, output", [
 #     ("buba", "ba"),
