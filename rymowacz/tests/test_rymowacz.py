@@ -37,7 +37,7 @@ def input_dictionary():
         "oa": ["boa"],
         "oo": ["zoo"],
         "ozi": ["kozi", "wozi", "grozi"],
-        "i": ["mi"],
+        "i": ["mi", "ćmi"],
     }
     return reduce(list.__add__, rhymes_per_harmony.values())
 
@@ -47,10 +47,10 @@ def input_dictionary():
     ("et", ["wnet", "net"]), ("ebak", ['źrebak', "chlebak"]),
     ("iem", ["wiem", "ciem", "zjem"]), ("ieczór", ['wieczór']),
     ("ij", ["wij", "bij"]), ("utnie", ["smutnie", "wyrzutnie"]),
-    ("o", ["to", "zło", "zoo"]),
+    ("o", ["to", "zło"]),    # zoo ?
     ("oa", ["boa"]), ("oo", ["zoo"]),
-    # ("ozi", ["kozi", "wozi"]), ("i", ["mi", "kozi", "wozi", "grozi"]),
-    # ("dziewczynka", ("a", 10), "ynka"),
+    ("ozi", ["kozi", "wozi", "grozi"]), ("i", ["mi", "ćmi"]),
+    # ("ynka", ["dziewczynka"]),
     # ("jojo", ("o", 3), "ojo"), ("jaja", ("ja", 2), "jaja"), ('zjem', ("jem", 1), "jem"),
 ])
 def test_get_rhymes(input_harmony, expected_rhymes, input_dictionary):

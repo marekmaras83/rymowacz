@@ -17,7 +17,7 @@ BASIC_DICTIONARY = list(set(BASIC_DICTIONARY))
 
 
 def get_rhymes(raw_harmony: str, word_dictionary: [str]) -> [str]:
-    def create_harmony_regex_pattern(harmony):
+    def create_harmony_regex_pattern(raw_harmony: str) -> str:
         pattern = ""
         for letter in raw_harmony:
             exchangeable_vovels = [
@@ -30,7 +30,13 @@ def get_rhymes(raw_harmony: str, word_dictionary: [str]) -> [str]:
         return pattern + "$"
 
     harmony_regex = create_harmony_regex_pattern(raw_harmony)
-    return [i for i in word_dictionary if re.search(re.compile(harmony_regex), i)]
+
+    rhymes = []
+    for word in word_dictionary:
+        if create_harmony_regex_pattern(get_rhyme_harmony(word)) == harmony_regex:
+            rhymes.append(word)
+
+    return rhymes
 
 
 def is_centralized_diphthong(word_to_check: str, letter_index: int):
