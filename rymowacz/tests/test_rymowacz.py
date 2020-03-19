@@ -3,43 +3,20 @@ import pytest
 from rymowacz.rymowacz import has_one_syllable, get_rhyme_core, find_simple_rhyme_core
 
 
-@pytest.mark.parametrize("input_word, expected_output", [
-    ("buba", False), ("wnet", True), ('źrebak', False),
-    ("wiem", True), ('zjem', True), ('wieczór', False), ("wij", True), ("smutnie", False),
-    ("to", True),
-    ("boa", False), ("zoo", False),
-    ("kozi", False), ("mi", True),
-    ("dziewczynka", False),
-    ("jojo", False), ("jawa", False)
+@pytest.mark.parametrize("input_word, expected_size_check, expected_simple_core, expected_core", [
+    ("buba", False, "a", "uba"), ("wnet", True, "et", "et"), ('źrebak', False, "ak", "ebak"),
+    ("wiem", True, "iem", "iem"), ('wieczór', False, "ór", "ieczór"),
+    ("wij", True, "ij", "ij"), ("smutnie", False, "ie", "utnie"),
+    ("to", True, "o", "o"),
+    ("boa", False, "a", "oa"), ("zoo", False, "o", "oo"),
+    ("kozi", False, "i", "ozi"), ("mi", True, "i", "i"),
+    ("dziewczynka", False, "a", "ynka"),
+    ("jojo", False, "o", "ojo"), ("jaja", False, "ja", "jaja"), ('zjem', True, "jem", "jem")
 ])
-def test_has_one_syllable(input_word, expected_output):
-    assert has_one_syllable(input_word) is expected_output
-
-
-@pytest.mark.parametrize("input_word, expected_output", [
-    ("buba", "a"), ("wnet", "et"), ('źrebak', "ak"),
-    ("wiem", "iem"), ('zjem', "jem"), ('wieczór', "ór"), ("wij", "ij"), ("smutnie", "ie"),
-    ("to", "o"),
-    ("boa", "a"), ("zoo", "o"),
-    ("kozi", "i"), ("mi", "i"),
-    ("dziewczynka", "a"),
-    ("jojo", "o"), ("jaja", "ja")
-])
-def test_find_simple_rhyme_core(input_word, expected_output):
-    assert input_word[find_simple_rhyme_core(input_word)::] == expected_output
-
-
-@pytest.mark.parametrize("input_word, expected_output", [
-    ("buba", "uba"), ("wnet", "et"), ('źrebak', "ebak"),
-    ("wiem", "iem"), ('zjem', "jem"), ('wieczór', "ieczór"), ("wij", "ij"), ("smutnie", "utnie"),
-    ("to", "o"),
-    ("boa", "oa"), ("zoo", "oo"),
-    ("kozi", "ozi"), ("mi", "i"),
-    ("dziewczynka", "ynka"),
-    ("jojo", "ojo"), ("jaja", "jaja"),
-])
-def test_get_rhyme_core(input_word, expected_output):
-    assert get_rhyme_core(input_word) == expected_output
+def test_get_rhyme_core(input_word, expected_size_check, expected_simple_core, expected_core):
+    assert has_one_syllable(input_word) is expected_size_check
+    assert input_word[find_simple_rhyme_core(input_word)::] == expected_simple_core
+    assert get_rhyme_core(input_word) == expected_core
 
 
 # ====== niedokładne:
