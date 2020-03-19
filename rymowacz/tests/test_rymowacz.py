@@ -3,23 +3,23 @@ import pytest
 from rymowacz.rymowacz import has_one_syllable, get_standard_rhyme_core, find_simple_rhyme_core
 
 
-@pytest.mark.parametrize("input_word, output", [
+@pytest.mark.parametrize("input_word, expected_output", [
     ("buba", False), ("wnet", True), ('źrebak', False),
     ("wiem", True), ('zjem', True), ('wieczór', False), ("wij", True),
     ("to", True),
-    ("boa", False),
+    ("boa", False), ("zoo", False),
     ("kozi", False), ("mi", True)
 ])
-def test_has_one_syllable(input_word, output):
-    assert has_one_syllable(input_word) is output
+def test_has_one_syllable(input_word, expected_output):
+    assert has_one_syllable(input_word) is expected_output
 
 
 @pytest.mark.parametrize("input_word, expected_output", [
-    ("wnet", "et"),
-    ("wiem", "iem"), ('zjem', "jem"),
+    ("buba", "a"), ("wnet", "et"), ('źrebak', "ak"),
+    ("wiem", "iem"), ('zjem', "jem"), ('wieczór', "ór"), ("wij", "ij"),
     ("to", "o"),
-    ("zło", "o"),
-    ("zoo", "o")
+    ("boa", "a"), ("zoo", "o"),
+    ("kozi", "i"), ("mi", "i")
 ])
 def test_find_simple_rhyme_core(input_word, expected_output):
     assert input_word[find_simple_rhyme_core(input_word)::] == expected_output
