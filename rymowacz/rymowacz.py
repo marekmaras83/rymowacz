@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-VOVELS = ['a', 'ą', 'e', 'ę', 'i', 'o', 'ó', 'u']
+VOVELS = ['a', 'ą', 'e', 'ę', 'i', 'o', 'ó', 'u', 'y']
 SOFTENING_VOVEL = 'i'
 MULTI_VOVEL_SYLLABLE_PREFIXES = ['j', SOFTENING_VOVEL]
 
@@ -53,5 +53,6 @@ def get_rhyme_core(word: str) -> str:
 
 
 if __name__ == "__main__":
-    word = input("Enter word to rhyme: ")
-    print(f"rhyme core for word {word} is {get_rhyme_core(word)}")
+    while True:
+        word = input("Enter word to rhyme: ")
+        print(f"rhyme core for word {word} is {get_rhyme_core(word)}")
