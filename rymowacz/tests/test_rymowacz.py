@@ -29,7 +29,7 @@ def input_dictionary():
         "uba": ["buba", "podróba"],
         "et": ["wnet", "net"],
         "ebak": ["źrebak", "chlebak"],
-        "iem": ["wiem", "ciem"],
+        "iem": ["wiem", "ciem", "zjem"],
         "ieczór": ["wieczór"],
     }
     return reduce(list.__add__, rhymes_per_harmony.values())
@@ -38,7 +38,7 @@ def input_dictionary():
 @pytest.mark.parametrize("input_harmony, expected_rhymes", [
     ("uba", ["buba", "podróba"]),
     ("et", ["wnet", "net"]), ("ebak", ['źrebak', "chlebak"]),
-    # ("wiem", ("iem", 1), "iem"), ('wieczór', ("ór", 5), "ieczór"),
+    ("iem", ["wiem", "ciem", "zjem"]), ("ieczór", ['wieczór']),
     # ("wij", ("ij", 1), "ij"), ("smutnie", ("ie", 5), "utnie"),
     # ("to", ("o", 1), "o"),
     # ("boa", ("a", 2), "oa"), ("zoo", ("o", 2), "oo"),
