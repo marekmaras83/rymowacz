@@ -5,11 +5,12 @@ from rymowacz.rymowacz import has_one_syllable, get_standard_rhyme_core, find_si
 
 @pytest.mark.parametrize("input_word, output", [
     ("buba", False), ("wnet", True), ('źrebak', False),
-    ("wiem", True), ('zjem', True), ('wieczór', False),
+    ("wiem", True), ('zjem', True), ('wieczór', False), ("wij", True),
     ("to", True),
     ("boa", False),
+    ("kozi", False), ("mi", True)
 ])
-def test_count_syllables(input_word, output):
+def test_has_one_syllable(input_word, output):
     assert has_one_syllable(input_word) is output
 
 
