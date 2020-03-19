@@ -5,7 +5,7 @@ from rymowacz.rymowacz import has_one_syllable, get_standard_rhyme_core, find_si
 
 @pytest.mark.parametrize("input_word, expected_output", [
     ("buba", False), ("wnet", True), ('źrebak', False),
-    ("wiem", True), ('zjem', True), ('wieczór', False), ("wij", True),
+    ("wiem", True), ('zjem', True), ('wieczór', False), ("wij", True), ("smutnie", False),
     ("to", True),
     ("boa", False), ("zoo", False),
     ("kozi", False), ("mi", True)
@@ -16,7 +16,7 @@ def test_has_one_syllable(input_word, expected_output):
 
 @pytest.mark.parametrize("input_word, expected_output", [
     ("buba", "a"), ("wnet", "et"), ('źrebak', "ak"),
-    ("wiem", "iem"), ('zjem', "jem"), ('wieczór', "ór"), ("wij", "ij"),
+    ("wiem", "iem"), ('zjem', "jem"), ('wieczór', "ór"), ("wij", "ij"), ("smutnie", "ie"),
     ("to", "o"),
     ("boa", "a"), ("zoo", "o"),
     ("kozi", "i"), ("mi", "i")
