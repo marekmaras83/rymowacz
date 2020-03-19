@@ -48,4 +48,3 @@ def test_get_rhyme_core(input_word, expected_output):
 # y/i
 # świnie,
 # skrzynie.
-

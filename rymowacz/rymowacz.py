@@ -3,9 +3,9 @@ SOFTENING_VOVEL = 'i'
 MULTI_VOVEL_SYLLABLE_PREFIXES = ['j', SOFTENING_VOVEL]
 
 
-def has_one_syllable(word: str):
+def has_one_syllable(word: str) -> bool:
 
-    def is_multiple_vovel_syllable(word, i):
+    def is_multiple_vovel_syllable(word: str, i: int):
         return i != len(word)-1 and word[i] in MULTI_VOVEL_SYLLABLE_PREFIXES and word[i + 1] in VOVELS
 
     first_syllable_found = False
