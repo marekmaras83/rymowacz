@@ -14,24 +14,6 @@ def is_centralized_diphthong(word_to_check: str, letter_index: int):
     return False
 
 
-def has_one_syllable(word: str) -> bool:
-    first_harmony_found = False
-    word_length = len(word)
-
-    letter_index = 0
-    while letter_index < word_length:
-        if word[letter_index] in VOVELS:
-            if first_harmony_found:
-                return False
-            else:
-                first_harmony_found = True
-                if letter_index < len(word)-1 and is_centralized_diphthong(word, letter_index):
-                    letter_index += 1
-        letter_index += 1
-
-    return first_harmony_found
-
-
 def find_single_tone_rhyme_harmony(word: str) -> int:
     reverse_enumerated_word = [(i, letter) for i, letter in enumerate(word)]
     reverse_enumerated_word.reverse()
@@ -42,15 +24,20 @@ def find_single_tone_rhyme_harmony(word: str) -> int:
                 return letter_index-1
             else:
                 return letter_index
+    return len(word)
 
 
 def get_rhyme_harmony(word: str) -> str:
-    first_core_index = find_single_tone_rhyme_harmony(word)
-    if has_one_syllable(word):
-        return word[first_core_index::]
-    else:
-        standard_rhyme_index = find_single_tone_rhyme_harmony(word[:first_core_index])
-        return word[standard_rhyme_index::]
+    harmony = ''
+    harmony_letter_index = len(word)
+    previous_harmony_letter_index = harmony_letter_index
+
+    for harmony_id in range(2):
+        harmony_letter_index = find_single_tone_rhyme_harmony(word[:previous_harmony_letter_index])
+        harmony = word[harmony_letter_index:previous_harmony_letter_index] + harmony
+        previous_harmony_letter_index = harmony_letter_index
+
+    return harmony
 
 
 if __name__ == "__main__":
