@@ -8,7 +8,8 @@ from rymowacz.rymowacz import has_one_syllable, get_rhyme_core, find_simple_rhym
     ("wiem", True), ('zjem', True), ('wieczór', False), ("wij", True), ("smutnie", False),
     ("to", True),
     ("boa", False), ("zoo", False),
-    ("kozi", False), ("mi", True)
+    ("kozi", False), ("mi", True),
+    ("dziewczynka", False),
 ])
 def test_has_one_syllable(input_word, expected_output):
     assert has_one_syllable(input_word) is expected_output
@@ -19,7 +20,8 @@ def test_has_one_syllable(input_word, expected_output):
     ("wiem", "iem"), ('zjem', "jem"), ('wieczór', "ór"), ("wij", "ij"), ("smutnie", "ie"),
     ("to", "o"),
     ("boa", "a"), ("zoo", "o"),
-    ("kozi", "i"), ("mi", "i")
+    ("kozi", "i"), ("mi", "i"),
+    ("dziewczynka", "a"),
 ])
 def test_find_simple_rhyme_core(input_word, expected_output):
     assert input_word[find_simple_rhyme_core(input_word)::] == expected_output
@@ -30,7 +32,8 @@ def test_find_simple_rhyme_core(input_word, expected_output):
     ("wiem", "iem"), ('zjem', "jem"), ('wieczór', "ieczór"), ("wij", "ij"), ("smutnie", "utnie"),
     ("to", "o"),
     ("boa", "oa"), ("zoo", "oo"),
-    ("kozi", "ozi"), ("mi", "i")
+    ("kozi", "ozi"), ("mi", "i"),
+    ("dziewczynka", "ynka"),
 ])
 def test_get_rhyme_core(input_word, expected_output):
     assert get_rhyme_core(input_word) == expected_output
