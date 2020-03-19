@@ -31,6 +31,13 @@ def input_dictionary():
         "ebak": ["źrebak", "chlebak"],
         "iem": ["wiem", "ciem", "zjem"],
         "ieczór": ["wieczór"],
+        "ij": ["wij", "bij"],
+        "utnie": ["smutnie", "wyrzutnie"],
+        "o": ["to", "zło"],
+        "oa": ["boa"],
+        "oo": ["zoo"],
+        "ozi": ["kozi", "wozi", "grozi"],
+        "i": ["mi"],
     }
     return reduce(list.__add__, rhymes_per_harmony.values())
 
@@ -39,10 +46,10 @@ def input_dictionary():
     ("uba", ["buba", "podróba"]),
     ("et", ["wnet", "net"]), ("ebak", ['źrebak', "chlebak"]),
     ("iem", ["wiem", "ciem", "zjem"]), ("ieczór", ['wieczór']),
-    # ("wij", ("ij", 1), "ij"), ("smutnie", ("ie", 5), "utnie"),
-    # ("to", ("o", 1), "o"),
-    # ("boa", ("a", 2), "oa"), ("zoo", ("o", 2), "oo"),
-    # ("kozi", ("i", 3), "ozi"), ("mi", ("i", 1), "i"),
+    ("ij", ["wij", "bij"]), ("utnie", ["smutnie", "wyrzutnie"]),
+    ("o", ["to", "zło", "zoo"]),
+    ("oa", ["boa"]), ("oo", ["zoo"]),
+    # ("ozi", ["kozi", "wozi"]), ("i", ["mi", "kozi", "wozi", "grozi"]),
     # ("dziewczynka", ("a", 10), "ynka"),
     # ("jojo", ("o", 3), "ojo"), ("jaja", ("ja", 2), "jaja"), ('zjem', ("jem", 1), "jem"),
 ])
