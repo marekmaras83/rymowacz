@@ -14,28 +14,27 @@ def is_centralized_diphthong(word_to_check: str, letter_index: int):
     return False
 
 
-def find_single_tone_rhyme_harmony(word: str) -> int:
+def get_single_tone_rhyme_harmony(word: str) -> (str, int):
     reverse_enumerated_word = [(i, letter) for i, letter in enumerate(word)]
     reverse_enumerated_word.reverse()
 
     for letter_index, letter in reverse_enumerated_word:
         if letter in VOVELS:
             if letter_index != 0 and is_centralized_diphthong(word, letter_index - 1):
-                return letter_index-1
+                return word[letter_index-1:], letter_index-1
             else:
-                return letter_index
-    return len(word)
+                return word[letter_index:], letter_index
+    return '', len(word)
 
 
 def get_rhyme_harmony(word: str) -> str:
     harmony = ''
-    harmony_letter_index = len(word)
-    previous_harmony_letter_index = harmony_letter_index
+    previous_harmony_letter_index = len(word)
 
     for harmony_id in range(2):
-        harmony_letter_index = find_single_tone_rhyme_harmony(word[:previous_harmony_letter_index])
-        harmony = word[harmony_letter_index:previous_harmony_letter_index] + harmony
-        previous_harmony_letter_index = harmony_letter_index
+        single_harmony, harmony_index = get_single_tone_rhyme_harmony(word[:previous_harmony_letter_index])
+        harmony = single_harmony + harmony
+        previous_harmony_letter_index = harmony_index
 
     return harmony
 
