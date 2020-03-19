@@ -1,4 +1,4 @@
-VOVELS = ['a', 'ą', 'e', 'ę', 'i', 'j', 'o', 'ó', 'u']
+VOVELS = ['a', 'ą', 'e', 'ę', 'i', 'o', 'ó', 'u']
 SOFTENING_VOVEL = 'i'
 MULTI_VOVEL_SYLLABLE_PREFIXES = ['j', SOFTENING_VOVEL]
 
