@@ -36,7 +36,7 @@ def input_dictionary():
 
 
 @pytest.mark.parametrize("input_harmony, expected_rhymes", [
-    ("uba", ["buba"]),# "podróba"]),
+    ("uba", ["buba", "podróba"]),
     ("et", ["wnet", "net"]), ("ebak", ['źrebak', "chlebak"]),
     # ("wiem", ("iem", 1), "iem"), ('wieczór', ("ór", 5), "ieczór"),
     # ("wij", ("ij", 1), "ij"), ("smutnie", ("ie", 5), "utnie"),
