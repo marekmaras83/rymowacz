@@ -41,7 +41,10 @@ def find_simple_rhyme_core(word: str) -> int:
                 return letter_index
 
 
-def get_standard_rhyme_core(word: str) -> str:
+def get_rhyme_core(word: str) -> str:
     first_core_index = find_simple_rhyme_core(word)
-    standard_rhyme_index = find_simple_rhyme_core(word[:first_core_index])
-    return word[standard_rhyme_index::]
+    if has_one_syllable(word):
+        return word[first_core_index::]
+    else:
+        standard_rhyme_index = find_simple_rhyme_core(word[:first_core_index])
+        return word[standard_rhyme_index::]
