@@ -38,8 +38,12 @@ def input_dictionary():
         "oo": ["zoo"],
         "ozi": ["kozi", "wozi", "grozi"],
         "i": ["mi", "ćmi"],
+        "ynka": ["dziewczynka"],
+        "ojo": ["jojo"],
+        "jaja": ["jaja", "taja", "maja"],
+        "jem": ['zjem'],
     }
-    return reduce(list.__add__, rhymes_per_harmony.values())
+    return sorted(list(set(reduce(list.__add__, rhymes_per_harmony.values()))))
 
 
 @pytest.mark.parametrize("input_harmony, expected_rhymes", [
@@ -50,11 +54,11 @@ def input_dictionary():
     ("o", ["to", "zło"]),    # zoo ?
     ("oa", ["boa"]), ("oo", ["zoo"]),
     ("ozi", ["kozi", "wozi", "grozi"]), ("i", ["mi", "ćmi"]),
-    # ("ynka", ["dziewczynka"]),
-    # ("jojo", ("o", 3), "ojo"), ("jaja", ("ja", 2), "jaja"), ('zjem', ("jem", 1), "jem"),
+    ("ynka", ["dziewczynka"]),
+    # ("ojo", ["jojo"]), ("jaja", ["jaja", "taja", "maja"]), ("jem", ['zjem']),
 ])
 def test_get_rhymes(input_harmony, expected_rhymes, input_dictionary):
-    assert get_rhymes(input_harmony, input_dictionary) == expected_rhymes
+    assert sorted(get_rhymes(input_harmony, input_dictionary)) == sorted(expected_rhymes)
 
 # ====== niedokładne:
 # y/i
